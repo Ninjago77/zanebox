@@ -1,0 +1,5 @@
+import nrf24l01test
+
+nrf24l01test.slave()
+
+print("slave")

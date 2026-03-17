@@ -1,0 +1,142 @@
+Starting the project I want to decide what I want from the project:-
+
+ - a server manager (I have 4 linux servers at home that I want to manage)
+ - a docker swarm manager (docker swarm on those 4 servers that I want to view and control)
+ - manage from anywhere on the planet (wifi capability needed) 
+ - management controls (buttons/switches/some kind of multi input)
+ - textual or graphical & more output (displays?)
+ - rgb!! as much as possible
+ - integration with my trancievers (nrf24lo1) that I bought a while ago, so I can control it hands free with another handheld project later down the line
+
+So now I need to figure out what decisions I need to make, what to research & what to test:-
+
+1. what pcb design software
+2. what microcontroller
+3. (surprise: where I'm going to find the footprint for my microcontroller)
+4. compatibility and testing with my trancievers (nrf24lo1)
+5. test compatibility with the lcd display I have (color display with tfts testing was done before the project)
+6. (surprise: where I'm going to find/make the footprint for my tranciever)
+7. decide additional outputs
+8. decide inputs
+9. what now & what next
+
+1. Now the first thing to choose was what design software I will use:-
+
+ - fusion 360 (used it before in school), plus if I used fusion, I could use the school's THT pcb making stuff as they only allow it with fusion
+ - EasyEDA (apparently very easy according to online sources)
+ - KiCAD (appaerntly very powerful and the literal stasis devboard starter project picked it)
+
+I chose fusion, bcs I could use my school's THT pcb making area with it, instead of ordering a pcb off of someplace else.
+
+I also found this fusion library for any non microcontroller or major parts that I need for my project
+![image](https://stasis.hackclub-assets.com/images/1773723926325-m2mynk.png)
+
+2. Now to decide what microcontroller, I already have 3
+
+![20260316_220758](https://stasis.hackclub-assets.com/images/1773724149938-nkh8f7.jpg)
+
+ - ESP32-WROOM32-WIFI: runs on 3v3, has wifi, a load of pins, any protocol one could ever want
+ - EIMTechnology's STEPico (essentially a Pico with 4 neopixel leds in pin 23): runs on 3v3, medium amount of pins, easy micropython, any protocol
+ - Arduino Nano: runs on 5v :), loads of ADC PINS unlike the top 2, less pins overall though
+
+I chose the biggest and baddest, the esp32, it is generally what is used for multi module projects like this, 
+and it has the most gpio pins, and most pins overall
+and it is the only one out of these that has any inbuilt wifi support.
+
+3. This specific board that I have is the esp32 wroom32 wifi, 
+but it barely has any compatible documentation or footprints for it, if it exists, its for either the chip only, another esp32 board, a different wroom32 board with more or less chips than 30 (which is what I have)
+
+After a lot of red herrings, I finally found a compatible footprint, from a doit_esp32_devboard, which isnt close to my wroom32
+but It has the right number of pins and has them in the right places ( I checked everysingle one )
+
+Schematic:
+![image](https://stasis.hackclub-assets.com/images/1773725182649-nj83ph.png)
+
+footprint:
+![image](https://stasis.hackclub-assets.com/images/1773725233940-p6xi1v.png)
+
+pinout diagram: (official)
+![ESP32-Pinout](https://stasis.hackclub-assets.com/images/1773781565729-8x9zhq.jpg)
+
+4. Now to testing with the nrf24lo1:
+
+Firstly wiring diagrams:
+ - nrf24lo1 pinout:
+ ![nRF24L01-Arduino-Pinout2](https://stasis.hackclub-assets.com/images/1773781613338-yhsczy.jpg)
+ - Main tester (w/esp32):
+ ![transciever_to_esp32](https://stasis.hackclub-assets.com/images/1773781653845-1wvqby.png)
+ - Random tester (w/pico):
+ ![pico-nrf24L01_wiring-768x763](https://stasis.hackclub-assets.com/images/1773781718505-fsi75z.png)
+
+# Coding not recorded using hackatime, bcs I used thonny (which was required as I needed to run multiple boards at the same time), not vscode, which doesnt have a plugin for hackatime yet.
+
+The tester code consists of 
+ - nrf24lo1 library (public)
+ - nrf24lo1test library (public, but hard to find, but very easy to use) & didnt have support for the pico testing, so I added it:
+ ![image](https://stasis.hackclub-assets.com/images/1773781306693-09azfl.png)
+ - A few lines for master code
+ - A few lines for slave code
+ - These, along with wiring diagrams can be found on the github for this project btw
+
+Here are the IRL pics:
+ - Main Tester (ignore the LCD, that shows up later):
+ ![20260316_210423](https://stasis.hackclub-assets.com/images/1773784420205-onitl2.jpg)
+
+ - Random Tester:
+ ![20260316_210504](https://stasis.hackclub-assets.com/images/1773784339862-z258au.jpg)
+
+
+After a few loose connections & speed change problems in the library itself:
+![image](https://stasis.hackclub-assets.com/images/1773782014106-x6y0j9.png)
+ 
+I got it working, from my testing, here are the results:
+ - the msgs are recieved 20-30ms off (which is much better than I though)
+ - the msgs started breaking after 30 meters (not what I expected, but will still do fine)
+
+5. Next, is testing the LCD Screen (pic is up):
+
+So heres the wiring (I used 4bit mode, which is slower than 8bit mode, but It uses less pins!):
+![image](https://stasis.hackclub-assets.com/images/1773782436549-tak018.png)
+
+And some tester code (led_test) running later, I got it working:
+ - with a little contrast problem
+ - & a backlight problem
+ - both of which can be fixed with a 5v supply directly instead of 3v3 and using 10k pots
+
+6. Now to move on to where I'm going to get the nrf24lo1 footprint, as well as the lcd display & color display footprints
+
+Well... I searched far & wide, up and down the *High Seas (by hackclub)*, I couldn't find compatible footprints.
+So, I *MADE THEM MYSELF, (FROM SCRATCH)* :-
+ - LCD footprint & schematic:
+ ![image](https://stasis.hackclub-assets.com/images/1773782984555-fzpt43.png)
+ - COLOR Display(s) (I want 2 on the project, but I have a few of 2 types, so I made a multicompatable one for both):
+ ![20260317_143218](https://stasis.hackclub-assets.com/images/1773783288598-5l73cr.jpg)
+ - COLOR Display(s) footprint & schematic:
+ ![image](https://stasis.hackclub-assets.com/images/1773783346793-94sm1l.png)
+ - nrf24lo1 footprint & schematic:
+ ![image](https://stasis.hackclub-assets.com/images/1773783460948-khv38y.png)
+
+7. Now for additional outputs, here are somethings lying around, or ones that I can eventually get that I'll throw on there:
+ - 2 Neopixel leds (hard to see, but they are there):
+ ![20260317_143951](https://stasis.hackclub-assets.com/images/1773783777893-kjndfm.jpg)
+ - a Diffused rgb led:
+ ![image](https://stasis.hackclub-assets.com/images/1773783848969-8xd26v.png)
+ - A custom EIMTechnology Speaker Module:
+ ![20260317_144551](https://stasis.hackclub-assets.com/images/1773783988581-kht5tj.jpg)
+
+8. Next for inputs:
+ - 2 buttons/switches & a potentiometer (exculding backlight/contrast ones):
+ ![image](https://stasis.hackclub-assets.com/images/1773784066265-33a5yp.png)
+ - A joystick module:
+ ![20260317_143941](https://stasis.hackclub-assets.com/images/1773784116101-ru1bqj.jpg)
+
+9. Now heres what I have on fusion so far, excluding these first:
+ - backlight/contrast potentiometers
+ - speaker module
+ - joystick module
+ - 2 neopixel modules
+
+Here it is:
+![image](https://stasis.hackclub-assets.com/images/1773784214308-xzy7o0.png)
+
+Next is to begin connections &/or make footprints & schematics for the missing parts
