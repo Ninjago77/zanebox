@@ -1,0 +1,49 @@
+So now I've begun hunting for missing footprints,
+starting with the 10k pots that I have:
+ - ![image](https://stasis.hackclub-assets.com/images/1773867006498-r7qmnj.png)
+
+since these will be asjusted like once or twice, then forgotten about,
+I don't need to worry about making a 3d model for the knob to turn it.
+
+This is one of the footprints that I can't just make in a few minutes because,
+it requires specific measurements not standardized ones.
+
+So, after a few missing footprints/symbols from snapeda.com and others,
+I found the same seller continously popping up: https://digikey.ca
+
+Originally, I thought this site only had datasheet and purchasing information,
+but turns out they can fetch footprints for you and/or redirect you to the correct
+vendor for the symbol/footprints. This was perfect, not just for this project,
+but also for many more to come.
+
+For future reference, I'm also going to put the redirected vendor here:
+https://www.ultralibrarian.com
+
+So I got a 10k pot that looks close enough to mine,
+and got the footrpints & schematic! Score!!!:
+ - ![image](https://stasis.hackclub-assets.com/images/1773869659526-5x7n89.png)
+ - ![image](https://stasis.hackclub-assets.com/images/1773869671438-9dtjyo.png)
+
+Next are the following, which I can make in fusion by myself:-
+ - neopixel module (with breakout board pins)
+ - joystick module
+ - EIMTechnology speaker
+
+And done, here are the footprints and schematics:-
+ - neopixel module: ![image](https://stasis.hackclub-assets.com/images/1773870304878-jij9jx.png)
+ - joystick module: ![image](https://stasis.hackclub-assets.com/images/1773870884484-iaqvjf.png)
+ - EIMTechnology speaker: ![image](https://stasis.hackclub-assets.com/images/1773871646018-r9ljes.png)
+
+all custom made by yours truly :)
+
+Now the next set of stuff i need to do would probably be to start wiring things up,
+but I do want to test out the EIMTechnology Speaker first, before finalising on it.
+
+Oh, and I also want to check out this nice potentiometer module I found lying around,
+maybe I can use this one instead of the normal ones as it has a click to it:
+ - ![image](https://stasis.hackclub-assets.com/images/1773871834965-d462do.png)
+
+So this is what my overall schematic looks like rn:-
+ - ![image](https://stasis.hackclub-assets.com/images/1773872184838-o57qyd.png)
+
+
