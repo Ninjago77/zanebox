@@ -1,0 +1,42 @@
+So I've got started on wiring the schematic but I've run into an interesting problem.
+
+Current progress:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775104362767-1rwx2q.png)
+
+While the non i2c lcd display doesnt use spi, both rgb displays and the transciever do!
+
+So, I have to use 3 spi lines but while the esp32 has 4 spi lanes, it only has 2 hardware spis,
+the other 2 are software that'll apparently mess with the flash memory if I try to use them.
+
+So, I'll have to run both rgb displays  and the transciever on one spi lane (with multiple chip select lanes)
+but keep only the chip select lanes on all of them seperate which I can do, but turns out there's
+a lot of pins that are essentially unusable, so I have to avoid them, like the boot mess up,
+serial comm mess ups, flash memory mess ups, & more.
+
+So after wiring up most of the displays:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775108184257-zhu44h.png)
+
+I came to the realization that, I wouldn't be able to stick all my inputs and more on my esp32 given the amount of unusable pins.
+
+Luckily, I have a spare nano that I can use, which I will be able to link together with the esp32 on its second uart ports,
+to allow for extra in & out pins!!!!
+
+So, after a bunch of rearranging, & moving the read data pins from the lcd to read only ones,
+I was able to fit both rgb displays and the lcd display and the transciever:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775109839166-xcsjs4.png)
+
+So, now I have added the nano to the top, connected over uart, with a voltage divider in the way because its required due
+to the 3v3 and 5v differences:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775110965001-j76f53.png)
+
+So then, I used some resistors and the arduino nano's pwm channels and wired up both neopixels and the rgb led:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775111596472-44e21k.png)
+
+So these are the only components not wired up:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775111993322-tvnl62.png)
+
+So all in all this is what the schematic looks like as of right now:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775112314740-417s58.png)
+
+And there are a lot of voltage related issues that needs to be resolved in the schematic before pcb design,
+ so a lot to work on!
