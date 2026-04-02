@@ -1,0 +1,19 @@
+Before I continue any further, I need to figure out the problem with voltage and input,
+I have a 4.5 V 3AAA battery case but I also want to power with a usb (5v). so what do I do?
+
+I have to first make footprints for these female usb A and usb C inputs (i'll use the same pth but use wires irl)
+ - ![20260402_103040](https://stasis.hackclub-assets.com/images/1775151420252-ktmgd9.jpg)
+ - ![image](https://stasis.hackclub-assets.com/images/1775151870210-fp1jsa.png)
+
+So now thats done, time to work on voltage horror!
+
+But before that, I need to use a dpdt switch to switch between battery powered and charger powered.
+
+So, here it is:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775153969893-z5hgfc.png)
+
+I also wired up the joystick:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775154337767-rfejk1.png)
+
+So majority of the schematic is done, a little wiring & double-checkin later, then pcb design!:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775154365478-x09rwy.png)
