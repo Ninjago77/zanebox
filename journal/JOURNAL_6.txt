@@ -1,0 +1,25 @@
+Before I add the power switch (maybe a button with an scr?),
+
+I need to first double check all the power as well as sanity check the schematic
+a little, so that's what I did & I found 3 problems:-
+ - The lcd screen barely counts the ESP32-WROOM32's output as readable, which is ok, until the batteries get low:
+ - ![image](https://stasis.hackclub-assets.com/images/1775345956437-pe8pn9.png)
+ - The nrf24l01 with 3v3 as well as the esp32 with 4.5 V dropping slowly isnt good also due to batteries:
+ - ![image](https://stasis.hackclub-assets.com/images/1775346089197-7fhwks.png)
+
+So, I've decided to use 2x 3 AAA Battery packs in parallel (but I wont add it to the schematic bcs it should
+be easy to swap it back), & I've also added capacitors for both 3v3 and 5v to atleast not let it crash.
+ - ![image](https://stasis.hackclub-assets.com/images/1775346210063-0qy0jt.png)
+
+And, I'll also be making multiple pcbs connecting to each other at 90 degree angle,
+so that the displays and io are all place appropriately!
+
+Also, I'm not using an scr, it drops voltage, (like everything else...), so power switch it is,
+here I added it to the battery & usb circuit:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775346423925-p5td85.png)
+
+So this is what the overall ciruit looks like:
+
+![image](https://stasis.hackclub-assets.com/images/1775346459678-ucygrs.png)
+
+Pretty good!, So time to move onto pcb design next time!

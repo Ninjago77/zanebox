@@ -19,3 +19,4 @@ Now this is the final (hopefully) schematic:-
 
 ![image](https://stasis.hackclub-assets.com/images/1775270344930-jfc5js.png)
 
+OH I ALSO NEED TO ADD A POWER BUTTON/SWITCH!
