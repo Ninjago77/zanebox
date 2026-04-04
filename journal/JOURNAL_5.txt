@@ -1,0 +1,21 @@
+So now to work on the EIM Speaker Module, there isn't really any standalone
+documentation here, so I decided to use an FPGA kit's docs for all the pinout info:-
+ - https://doc.eimtechnology.com/kc-series-experiment-based-learning/kc22-digital-circuits-and-fpga/chapter-6-code
+ - ![image](https://stasis.hackclub-assets.com/images/1775269546787-k3folc.png)
+
+So after doing more online research on how speakers like this work, I decided to use the nano's pwm pin for the analog input,
+but... I don't have more pwm pins, and I also won't have enough storage on the nano for 3 sec longer sound bites,
+so I wanted to see If I could use the ESP32-WROOM32 instead, Annd I can! I don't even need to do the fancy voltage divider setup,
+just rearrange the pins a little to allow for pin 25/26 (I chose 26) & done:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775269740407-cvtdxh.png)
+
+I did have to change both the lcd & the transciever's wiring just a little to accomodate it:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775269798233-3yaefm.png)
+
+Finally, I also wired up the switches (they don't need a pull up bcs the nano has an internal one, thats also why im using GND):-
+ - ![image](https://stasis.hackclub-assets.com/images/1775270288068-nctu6d.png)
+
+Now this is the final (hopefully) schematic:-
+
+![image](https://stasis.hackclub-assets.com/images/1775270344930-jfc5js.png)
+
