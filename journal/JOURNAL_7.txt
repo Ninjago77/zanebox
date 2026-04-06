@@ -1,0 +1,24 @@
+So, I've just realised that I need to pcbs at 90 degree vertical attachment using 90 degree header pins.
+Uh, so I've got to get started on that.... So the first thing I'll do is add a sketchy schematic & footprint,
+maybe it'll work?
+
+So here, I built a testing one, with one symbol but 2 footprints together with linked mapping:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775435216514-sg1ysf.png)
+ - ![image](https://stasis.hackclub-assets.com/images/1775435236150-jgrz4i.png)
+
+So... that did not work out, it was internally linked, however I couldn't seperate each rectangle.
+
+So, I will have to do the even sketchier route... using 2 and then ignoring the connections in the pcb.
+So this is my better one, but I will have to ignore the pcb conns for it:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775437076800-3x3pam.png)
+ - ![image](https://stasis.hackclub-assets.com/images/1775437113111-5r98pk.png)
+
+The CONNs are for the UART communication, and they are squares for orientation (& so I don't lose my mind when building it.)
+So this is what it's lookin like:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775438233348-987qxl.png)
+
+Overall, it's almost unreadable from a single screenshot:-
+ - ![image](https://stasis.hackclub-assets.com/images/1775438382316-61z43o.png)
+
+Now, I can finally move onto the actual pcb design!
+
