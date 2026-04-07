@@ -1,0 +1,8 @@
+So, I got the chance to go to a Moderately Local Electronics Shop, & I was able to procure
+some essentials and backups for the project:-
+
+![image](https://stasis.hackclub-assets.com/images/1775582785026-jdat7f.jpg)
+
+ - The 18 gauge solid core is for direct connection from the USB Breakouts to the PCB
+ - The 90 degree headers for 16pin connections between both boards
+ - the Female extended headers are for gaps between the pcb & the displays & also to squeeze the microcontrollers underneath.
