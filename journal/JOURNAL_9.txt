@@ -1,0 +1,13 @@
+So Before I started on the pcb, I just needed to double check the LED visibility,
+
+I originally wanted to use a hot glue rod with an rgb led at one end and then just control that singular led for the entire rod,
+but after some IRL testing with some multicoloured leds (thats why they have 2 pins instead of 4pins):-
+ - ![20260407_112450](https://stasis.hackclub-assets.com/images/1775586454176-w6iu54.jpg)
+ - ![20260407_112514](https://stasis.hackclub-assets.com/images/1775586465848-np64k1.jpg)
+
+And the colour only goes about 2 cm deep consistently, 
+so what I'll have to do is use 4 leds,
+with two 4-5cm long hot glue rods with leds in them,
+all run parallely to achieve my RGB EFFECT.
+
+bUT.... I don't need to modify the actual pcb rn, I can just solder wires later!
